@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Odyssée Arctique : Lumières Polaires et Faune Sauvage au Svalbard </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      template: {
+                          sable: '#FFEDD5', 
+                          ocre: '#F97316',   // Orange Vibrant (Brand Accent)
+                          roche: '#0F172A',  // Bleu Nuit (Brand Dark)
+                          ciel: '#0D9488',   // Vert Lagon (Brand Primary)
+                          bg: '#FFF7ED'      // C'est un blanc cassé chaud, parfait pour la lecture et le contraste.
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'sans-serif'], // Nouvelle police corps
+                      serif: ['"Outfit"', 'sans-serif'],           // Nouvelle police titres
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* 2. FORÇAGE DES GRAISSES (Comme sur la Landing Page) */
+        .font-sans { font-weight: 600 !important; }
+        .font-serif { font-weight: 800 !important; }
+
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #F97316; /* ocre */
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+    
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">MyTrip<span class="text-template-ocre">Planner</span></a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée à Longyearbyen, porte de l'Arctique</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Immersion dans l'histoire et la culture arctique</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Aventure en traîneau à chiens sous la nuit polaire</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Plongée dans l'héritage minier du Svalbard</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Exploration d'une grotte de glace scintillante</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Safari photo arctique et rencontre avec la faune</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Journée libre et artisanat local</a>
+            
+                <a href="#jour-8" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J8 Aventure en motoneige vers l'Est</a>
+            
+                <a href="#jour-9" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J9 Réveillon de Noël arctique</a>
+            
+                <a href="#jour-10" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J10 Noël au calme et balade hivernale</a>
+            
+                <a href="#jour-11" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J11 Art arctique et culture locale</a>
+            
+                <a href="#jour-12" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J12 Randonnée en raquettes et panorama arctique</a>
+            
+                <a href="#jour-13" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J13 Dernière chasse aux aurores boréales et dîner d'adieu</a>
+            
+                <a href="#jour-14" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J14 Derniers instants et préparation au départ</a>
+            
+                <a href="#jour-15" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J15 Départ du Svalbard</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/header.png" || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021'}');">
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.2em] mb-4 uppercase text-xs font-bold">Feuille de Route</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">SVALBARD</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">L'Odyssée Arctique : Lumières Polaires et Faune Sauvage au Svalbard</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🗓️ Du 16 au 30 Décembre 2025</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">💰 8000€</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🛬 7h depuis Paris avec escale</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-16 relative">
+      <div class="text-center mb-16">
+            <h2 class="text-template-ocre font-bold tracking-normal text-4xl mt-2 uppercase font-serif">Votre Roadtrip</h2>
+      </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée à Longyearbyen, porte de l'Arctique</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un voyage vers le Grand Nord, vous atterrissez à Longyearbyen, la capitale administrative du Svalbard. L'obscurité de la nuit polaire vous enveloppe, créant une atmosphère mystique et excitante. Prenez le temps de vous installer et de vous imprégner de l'ambiance unique de cette ville isolée, où l'aventure commence dès le premier pas.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛬 <strong>Arrivée et transfert</strong>: Atterrissage à l'aéroport de Longyearbyen (LYR) et transfert vers votre hôtel. Profitez du paysage enneigé même dans l'obscurité.</li><li>🛏️ <strong>Installation à l'hôtel</strong>: Prenez possession de votre chambre et détendez-vous après le voyage. Familiarisez-vous avec les installations de votre hébergement.</li><li>🚶‍♂️ <strong>Première balade découverte</strong>: Une courte promenade autour de l'hôtel pour sentir l'air arctique et admirer les lumières de la ville sous la nuit polaire.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ À savoir</p>
+                                <p class="text-gray-700">Le Svalbard est une zone hors Schengen, mais les formalités sont simplifiées pour les citoyens de l'UE. Un passeport valide est indispensable.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🌡️ Températures</p>
+                                <p class="text-gray-700">En décembre, les températures peuvent descendre bien en dessous de -15°C. Prévoyez des couches de vêtements très chaudes et techniques.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Immersion dans l'histoire et la culture arctique</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez au cœur de l'histoire fascinante du Svalbard, de ses explorateurs intrépides à son héritage minier. Le musée local offre un aperçu captivant de la vie dans l'Arctique, tandis qu'une exploration du centre-ville révèle l'âme de cette communauté isolée. La nuit polaire offre un cadre unique pour ces découvertes.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏛️ <strong>Visite du Musée du Svalbard</strong>: Explorez les expositions dédiées à la faune, la flore, l'histoire minière et l'exploration polaire de l'archipel. Une excellente introduction à votre séjour.</li><li>🚶‍♀️ <strong>Découverte du centre-ville</strong>: Flânez dans les rues principales de Longyearbyen, admirez les maisons colorées et découvrez les quelques boutiques et galeries d'art locales.</li><li>🌌 <strong>Chasse aux Aurores Boréales (optionnel)</strong>: En soirée, si le ciel est dégagé, tentez d'apercevoir les magnifiques aurores boréales depuis un point d'observation dégagé.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Conseil photo</p>
+                                <p class="text-gray-700">Pour les aurores boréales, utilisez un trépied et des réglages manuels (longue exposition, ISO élevé) pour capturer leur splendeur.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">👟 Chaussures</p>
+                                <p class="text-gray-700">Retirez vos chaussures à l'entrée de nombreux bâtiments publics et privés, une tradition locale pour garder la propreté et le respect.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Aventure en traîneau à chiens sous la nuit polaire</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Vivez une expérience arctique authentique en vous laissant guider par une meute de chiens de traîneau à travers les paysages enneigés. Le silence de la toundra, seulement brisé par le souffle des chiens et le crissement des patins, est une sensation inoubliable. Une immersion totale dans la nature sauvage du Svalbard, avec l'espoir d'apercevoir les aurores boréales.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🐕 <strong>Expédition en traîneau à chiens</strong>: Participez à une excursion mémorable où vous apprendrez à diriger votre propre attelage de chiens husky. Glissez silencieusement sur la neige, une expérience emblématique de l'Arctique.</li><li>☕ <strong>Pause réconfortante</strong>: Après l'effort, réchauffez-vous autour d'un feu de camp avec une boisson chaude et des biscuits, partageant les récits de l'aventure avec vos guides.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🧤 Équipement</p>
+                                <p class="text-gray-700">Les opérateurs de traîneau à chiens fournissent généralement des combinaisons thermiques, des bottes et des moufles. Portez vos propres couches chaudes en dessous.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⚠️ Sécurité</p>
+                                <p class="text-gray-700">Écoutez attentivement les instructions de votre guide. La sécurité est primordiale lors des activités en milieu sauvage.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Plongée dans l'héritage minier du Svalbard</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Explorez l'une des anciennes mines de charbon qui ont façonné l'histoire et l'économie de Longyearbyen. Cette visite offre un aperçu poignant des conditions de vie et de travail des mineurs, et de l'importance de cette industrie pour le développement de l'archipel. Une expérience éducative et immersive sous la surface de la terre arctique.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>⛏️ <strong>Visite guidée de la Mine 3</strong>: Descendez dans les galeries d'une ancienne mine de charbon pour comprendre le passé industriel du Svalbard. Les guides partagent des anecdotes fascinantes sur la vie des mineurs.</li><li>☕ <strong>Café et pâtisseries locales</strong>: Après la visite, réchauffez-vous dans un café du centre-ville et goûtez aux spécialités locales, comme le gâteau aux baies arctiques.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📚 Histoire</p>
+                                <p class="text-gray-700">Le charbon a été la principale ressource du Svalbard pendant des décennies, attirant des travailleurs de nombreux pays.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Anecdote</p>
+                                <p class="text-gray-700">La Mine 3 est l'une des rares mines encore accessibles au public, offrant un témoignage unique de cette époque.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Exploration d'une grotte de glace scintillante</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aventurez-vous sous la surface gelée pour découvrir la beauté éphémère d'une grotte de glace. Sculptées par la nature, ces cathédrales de glace offrent un spectacle féerique de formations cristallines et de lumières bleutées. Une expérience magique qui révèle la puissance et la délicatesse de l'environnement arctique.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🧊 <strong>Excursion en grotte de glace</strong>: Accompagné d'un guide, partez en motoneige ou en véhicule chenillé vers un glacier pour explorer ses entrailles. Admirez les formations de glace bleue et les stalactites scintillantes.</li><li>🍽️ <strong>Dîner dans un restaurant local</strong>: Savourez un dîner chaleureux dans l'un des restaurants de Longyearbyen, proposant des plats à base de produits locaux comme le renne ou le phoque.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🧗 Accès</p>
+                                <p class="text-gray-700">L'accès aux grottes de glace nécessite souvent une marche sur glacier et l'utilisation de crampons. Une bonne condition physique est recommandée.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Photographie</p>
+                                <p class="text-gray-700">Les grottes de glace sont un paradis pour les photographes. N'oubliez pas votre appareil et un trépied pour des clichés époustouflants.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Safari photo arctique et rencontre avec la faune</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Partez à la découverte de la faune emblématique du Svalbard lors d'un safari photo en véhicule adapté. Gardez l'œil ouvert pour apercevoir des rennes du Svalbard, des phoques ou des oiseaux marins. Cette journée est une opportunité unique d'observer la vie sauvage dans son habitat naturel, tout en profitant des paysages grandioses de l'archipel.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🦌 <strong>Safari photo en véhicule chenillé</strong>: Explorez les environs de Longyearbyen à la recherche de la faune locale. Votre guide expert vous aidera à repérer les animaux et à comprendre leur environnement.</li><li>🔭 <strong>Observation des paysages</strong>: Profitez des arrêts pour admirer les panoramas enneigés et les fjords gelés. Le silence et l'immensité du paysage sont saisissants.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🐻‍❄️ Ours polaires</p>
+                                <p class="text-gray-700">L'observation d'ours polaires est rare et nécessite des expéditions plus lointaines et spécialisées. La sécurité est primordiale.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🤫 Respect de la faune</p>
+                                <p class="text-gray-700">Gardez toujours une distance respectueuse avec les animaux sauvages et suivez les instructions de votre guide.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Journée libre et artisanat local</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de cette journée pour vous détendre ou explorer Longyearbyen à votre rythme. C'est l'occasion parfaite de flâner dans les galeries d'art, de dénicher des souvenirs uniques ou simplement de savourer l'ambiance paisible de la ville. Une pause bienvenue avant de nouvelles aventures arctiques.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛍️ <strong>Shopping de souvenirs</strong>: Visitez les boutiques locales pour trouver des articles artisanaux, des vêtements polaires ou des bijoux inspirés de l'Arctique.</li><li>🎨 <strong>Visite de la Galerie d'Art</strong>: Découvrez les œuvres d'artistes locaux et internationaux inspirés par la beauté sauvage du Svalbard. Une immersion dans la créativité arctique.</li><li>☕ <strong>Détente dans un café</strong>: Savourez un chocolat chaud ou un café norvégien dans l'un des cafés cosy de la ville, observant la vie locale.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Idées cadeaux</p>
+                                <p class="text-gray-700">Pensez aux pulls en laine norvégienne, aux objets en bois flotté ou aux reproductions d'art local comme souvenirs.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Astuce</p>
+                                <p class="text-gray-700">Le Svalbard est une zone hors taxe, ce qui peut rendre certains achats intéressants.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-8" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 8</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Aventure en motoneige vers l'Est</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Embarquez pour une excursion palpitante en motoneige à travers les vastes étendues gelées du Svalbard. Cette aventure vous mènera vers des paysages reculés, offrant des vues imprenables sur les montagnes et les glaciers. Ressentez l'adrénaline de la vitesse et la liberté de l'exploration dans cet environnement polaire unique.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏍️ <strong>Excursion en motoneige</strong>: Participez à une longue excursion en motoneige, explorant les vallées et les plateaux enneigés. Votre guide vous mènera vers des points de vue spectaculaires.</li><li>🔥 <strong>Déjeuner en pleine nature</strong>: Profitez d'un repas chaud servi en extérieur ou dans une cabane isolée, une expérience typiquement arctique pour se réchauffer.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour8.jpg" class="w-full h-64 object-cover" alt="Jour 8">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⛑️ Permis de conduire</p>
+                                <p class="text-gray-700">Un permis de conduire valide est requis pour piloter une motoneige. Les passagers n'en ont pas besoin.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🌬️ Vent</p>
+                                <p class="text-gray-700">Le facteur vent peut rendre la température ressentie beaucoup plus froide. Protégez bien votre visage et vos mains.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-9" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 9</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Réveillon de Noël arctique</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Vivez un réveillon de Noël inoubliable dans l'ambiance féerique du Svalbard. La nuit polaire et les lumières scintillantes de Longyearbyen créent un cadre magique pour célébrer. Participez aux traditions locales ou savourez un dîner spécial, faisant de cette soirée un moment unique et mémorable.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>⛪ <strong>Messe de Noël locale</strong>: Assistez à la messe de Noël à l'église de Longyearbyen, la plus septentrionale du monde. Une expérience culturelle et spirituelle unique.</li><li>🍽️ <strong>Dîner de réveillon spécial</strong>: Savourez un dîner de Noël festif dans un restaurant proposant un menu spécial pour l'occasion. Réservez à l'avance car les places sont limitées.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour9.jpg" class="w-full h-64 object-cover" alt="Jour 9">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🌟 Ambiance</p>
+                                <p class="text-gray-700">Longyearbyen est magnifiquement décorée pour Noël, avec des lumières qui illuminent la nuit polaire.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Tradition</p>
+                                <p class="text-gray-700">Les Norvégiens célèbrent Noël le 24 décembre au soir. Le 25 est souvent une journée plus calme.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-10" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 10</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Noël au calme et balade hivernale</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de cette journée de Noël pour vous détendre et vous imprégner de l'atmosphère festive. Une balade tranquille dans les environs de Longyearbyen vous permettra d'apprécier la beauté hivernale et le silence de l'Arctique. C'est le moment idéal pour se ressourcer et savourer la magie de Noël loin de l'agitation habituelle.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>😴 <strong>Matinée détente</strong>: Profitez d'une matinée tranquille à l'hôtel, savourant un petit-déjeuner copieux et le calme de cette journée spéciale.</li><li>🚶‍♀️ <strong>Balade hivernale légère</strong>: Faites une courte promenade autour de la ville ou le long du fjord, observant les paysages enneigés et les lumières de Noël.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour10.jpg" class="w-full h-64 object-cover" alt="Jour 10">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📖 Lecture</p>
+                                <p class="text-gray-700">C'est une excellente journée pour lire un livre sur l'Arctique ou simplement profiter du confort de votre hébergement.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☕ Chocolat chaud</p>
+                                <p class="text-gray-700">De nombreux cafés proposent des boissons chaudes et des pâtisseries pour une pause gourmande et réconfortante.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-11" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 11</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Art arctique et culture locale</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Explorez la scène artistique et culturelle de Longyearbyen, qui reflète l'inspiration unique de l'environnement arctique. Visitez des galeries et des ateliers pour découvrir des œuvres d'art, des photographies et des créations artisanales. Cette journée offre une perspective différente sur la vie au Svalbard, à travers le regard de ses artistes.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🖼️ <strong>Visite de la Galleri Svalbard</strong>: Découvrez des expositions d'art contemporain et historique, ainsi que des photographies captivantes de l'Arctique. Un lieu d'inspiration et de réflexion.</li><li>🛍️ <strong>Exploration des ateliers d'artisans</strong>: Rencontrez des artisans locaux et découvrez leurs créations uniques, souvent inspirées par la nature et la culture du Svalbard.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour11.jpg" class="w-full h-64 object-cover" alt="Jour 11">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎨 Inspiration</p>
+                                <p class="text-gray-700">L'environnement extrême et la beauté du Svalbard sont une source d'inspiration inépuisable pour les artistes.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Souvenirs</p>
+                                <p class="text-gray-700">Acheter une œuvre d'art locale est un excellent moyen de ramener un souvenir authentique et significatif de votre voyage.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-12" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 12</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Randonnée en raquettes et panorama arctique</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Chaussez vos raquettes pour une randonnée paisible à travers les paysages enneigés autour de Longyearbyen. Cette activité douce vous permet d'apprécier le silence et l'immensité de la nature arctique à votre propre rythme. Votre guide partagera des connaissances sur la flore et la faune locales, ainsi que sur les techniques de survie en milieu polaire.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏔️ <strong>Randonnée guidée en raquettes</strong>: Partez pour une exploration des environs de Longyearbyen, découvrant des points de vue cachés et des paysages à couper le souffle. Le guide vous enseignera les bases de la survie en Arctique.</li><li>☕ <strong>Pause chaude en pleine nature</strong>: Profitez d'une boisson chaude et d'une collation au milieu de la nature, un moment de pure sérénité.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour12.jpg" class="w-full h-64 object-cover" alt="Jour 12">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶‍♀️ Niveau</p>
+                                <p class="text-gray-700">La randonnée en raquettes est accessible à la plupart des niveaux de forme physique. Les guides adaptent le parcours.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎒 Équipement</p>
+                                <p class="text-gray-700">Les raquettes et les bâtons sont fournis. Prévoyez des vêtements chauds et imperméables, ainsi qu'un petit sac à dos.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-13" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 13</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Dernière chasse aux aurores boréales et dîner d'adieu</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de votre dernière soirée au Svalbard pour tenter une ultime chasse aux aurores boréales. L'espoir de voir ces lumières célestes danser dans le ciel noir de la nuit polaire est une expérience magique. Terminez la journée par un dîner d'adieu, savourant les saveurs locales et les souvenirs de votre aventure arctique.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🌌 <strong>Excursion nocturne pour les aurores boréales</strong>: Rejoignez une excursion dédiée à l'observation des aurores boréales, souvent en bus ou en motoneige vers un lieu isolé. Le guide partagera des légendes et des faits scientifiques.</li><li>🍽️ <strong>Dîner d'adieu</strong>: Offrez-vous un dîner spécial dans un des meilleurs restaurants de Longyearbyen, pour célébrer la fin de votre incroyable voyage.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour13.jpg" class="w-full h-64 object-cover" alt="Jour 13">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">✨ Chance</p>
+                                <p class="text-gray-700">L'observation des aurores boréales dépend des conditions météorologiques et de l'activité solaire. La patience est de mise.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Souvenir</p>
+                                <p class="text-gray-700">Même sans aurores, la nuit polaire et les étoiles sont un spectacle en soi. Profitez de l'instant.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-14" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 14</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Derniers instants et préparation au départ</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Profitez de cette dernière journée pour faire vos derniers achats, envoyer des cartes postales ou simplement vous imprégner une dernière fois de l'atmosphère unique de Longyearbyen. C'est le moment de revoir vos photos, de vous remémorer les moments forts de votre voyage et de préparer votre retour, la tête pleine de souvenirs arctiques.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>✉️ <strong>Envoi de cartes postales</strong>: Visitez le bureau de poste le plus septentrional du monde pour envoyer des cartes postales avec un timbre unique du Svalbard.</li><li>🛍️ <strong>Achats de dernière minute</strong>: Profitez des dernières heures pour acheter des souvenirs ou des produits locaux que vous auriez manqués.</li><li>🚶‍♂️ <strong>Dernière balade</strong>: Une dernière promenade dans la ville pour dire au revoir à ce lieu extraordinaire.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour14.jpg" class="w-full h-64 object-cover" alt="Jour 14">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Astuce</p>
+                                <p class="text-gray-700">Le bureau de poste est une attraction en soi, avec son histoire et ses timbres spéciaux.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">✈️ Bagages</p>
+                                <p class="text-gray-700">Assurez-vous que tous vos souvenirs et équipements sont bien emballés pour le voyage de retour.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-15" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 15</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Départ du Svalbard</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">C'est le moment de quitter le Svalbard, la tête et le cœur remplis d'images et de souvenirs inoubliables. Le vol de retour vous ramènera vers des latitudes plus clémentes, mais l'esprit de l'Arctique restera gravé en vous. Un voyage qui marque, une expérience qui transforme, le Svalbard vous aura offert une aventure hors du commun.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛏️ <strong>Petit-déjeuner et check-out</strong>: Profitez d'un dernier petit-déjeuner à l'hôtel avant de procéder au check-out.</li><li>✈️ <strong>Transfert à l'aéroport</strong>: Transfert vers l'aéroport de Longyearbyen pour votre vol de retour vers Paris, via Oslo.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Svalbard-i3a1l5zy3gjr036/main/jour15.jpg" class="w-full h-64 object-cover" alt="Jour 15">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Souvenirs</p>
+                                <p class="text-gray-700">Revoyez vos photos et vidéos pour prolonger la magie de votre voyage arctique.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💭 Réflexion</p>
+                                <p class="text-gray-700">Le Svalbard est un lieu qui invite à la réflexion sur la nature, le climat et la résilience humaine.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+    </section>
+
+    <section id="pratique" class="bg-white border-t border-gray-200 pt-12 pb-12 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget vol: </strong>1000€/pers (Vol A/R Paris-Longyearbyen avec escale, classe économique)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget transports: </strong>200€/pers (Transferts aéroport, transports locaux en bus/taxi pour les activités)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget repas: </strong>1275€/pers (Environ 85€/jour pour 15 jours, repas variés, ni économique ni luxueux)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget logement: </strong>2800€/pers (14 nuits en hôtel 3 étoiles, environ 200€/nuit)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget activités: </strong>2725€/pers (Excursions traîneau, motoneige, grotte de glace, musées, etc.)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">Les périodes idéales pour ce séjour sont les mois de Décembre à Février pour la nuit polaire et les aurores boréales, ou Mars à Mai pour les activités hivernales avec plus de lumière.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Infos pratiques
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">👥 Population: Environ 2500 habitants à Longyearbyen, mais plus de rennes et d'ours polaires que d'humains sur l'archipel. Une communauté internationale et résiliente.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🇳🇴 Pays: Le Svalbard est un archipel norvégien avec un statut spécial. Il est régi par le Traité du Svalbard de 1920, qui accorde des droits égaux aux citoyens des pays signataires.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🤯 Insolite: Il est interdit de mourir au Svalbard. En raison du permafrost, les corps ne se décomposent pas, et le cimetière est fermé depuis 1950. Les chats sont également interdits pour protéger la faune locale.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">⚠️ Sécurité: La présence d'ours polaires est réelle. Il est obligatoire de porter une arme à feu en dehors des zones habitées, ou d'être accompagné d'un guide armé. Ne jamais s'éloigner seul.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>🔗</span> Liens Utiles
+                </h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://mytripplanner-dotfr.github.io/Svalbard-i3a1l5zy3gjr036/map.html" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🗺️ Carte Interactive</strong></a></li>
+                    
+                        <li><a href="https://visitsvalbard.com/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Visit Svalbard</strong></a></li>
+                    
+                        <li><a href="https://www.yr.no/en/forecast/daily-table/1-305391/Norway/Svalbard/Longyearbyen" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🌤️ Yr.no (Météo Norvégienne)</strong></a></li>
+                    
+                        <li><a href="https://www.flysas.com/fr-fr/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>✈️ SAS - Scandinavian Airlines</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif text-lg text-template-roche mb-2 font-bold">
+                MyTrip<span class="text-template-ocre">Planner</span>
+            </p>
+
+                <div class="flex justify-center gap-4 text-[10px] md:text-xs text-slate-500 mb-4 font-semibold">
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Mentions Légales</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">CGU</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Confidentialité</a>
+                </div>
+
+            <p class="text-[10px] text-gray-400 mb-2">
+                &copy; 2025 MyTripPlanner. Tous droits réservés.
+            </p>
+
+            <div class="flex justify-center">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest px-2 py-0.5 border border-gray-200 rounded-full inline-block">
+                    🤖 Contenu généré par IA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion Scroll & Menu
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+
+        // Active Link Highlighter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        document.querySelectorAll('div[id^="jour-"], section#pratique').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
